@@ -1,0 +1,19 @@
+on: pull_request
+
+jobs:
+  eslint:
+    runs-on: ubuntu-20.04
+    steps:
+        - name: Checkout to the run repository
+          uses: actions/checkout@v2
+
+        - name: Sets version and installs node
+          uses: actions/setup-node@v1
+          with:
+            node-version: 12
+
+        - name: Installs dependencies
+          run: npm install
+
+        - name: Runs Eslint for errors
+          run: npx eslint .
